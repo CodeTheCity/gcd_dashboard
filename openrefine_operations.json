@@ -1,0 +1,216 @@
+[
+  {
+    "op": "core/column-removal",
+    "description": "Remove column publish_up",
+    "columnName": "publish_up"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column publish_down",
+    "columnName": "publish_down"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column owner",
+    "columnName": "owner"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column icon",
+    "columnName": "icon"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column image",
+    "columnName": "image"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column background",
+    "columnName": "background"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column params",
+    "columnName": "params"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column ip",
+    "columnName": "ip"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column updating_user",
+    "columnName": "updating_user"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column updating_ip",
+    "columnName": "updating_ip"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column field_prev",
+    "columnName": "field_prev"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column field_recno",
+    "columnName": "field_recno"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column field_admincom",
+    "columnName": "field_admincom"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column categories_names at index 9 based on column categories using expression grel:cell.cross(\"20161118 Categories xlsx\", \"name\")[0].cells[\"categories\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "1",
+          "name": "published",
+          "type": "text",
+          "columnName": "published"
+        }
+      ]
+    },
+    "newColumnName": "categories_names",
+    "columnInsertIndex": 9,
+    "baseColumnName": "categories",
+    "expression": "grel:cell.cross(\"20161118 Categories xlsx\", \"name\")[0].cells[\"categories\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column categories_names",
+    "columnName": "categories_names"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column categories_names at index 9 based on column categories using expression grel:cell.cross(\"categories\", \"catid\")[0].cells[\"name\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "1",
+          "name": "published",
+          "type": "text",
+          "columnName": "published"
+        }
+      ]
+    },
+    "newColumnName": "categories_names",
+    "columnInsertIndex": 9,
+    "baseColumnName": "categories",
+    "expression": "grel:cell.cross(\"categories\", \"catid\")[0].cells[\"name\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column categories_names",
+    "columnName": "categories_names"
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column categories",
+    "columnName": "categories",
+    "keyColumnName": "id",
+    "separator": ";",
+    "mode": "plain"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column categories using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "1",
+          "name": "published",
+          "type": "text",
+          "columnName": "published"
+        }
+      ]
+    },
+    "columnName": "categories",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column category_name at index 9 based on column categories using expression grel:cell.cross(\"categories\", \"catid\")[0].cells[\"name\"].value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "1",
+          "name": "published",
+          "type": "text",
+          "columnName": "published"
+        }
+      ]
+    },
+    "newColumnName": "category_name",
+    "columnInsertIndex": 9,
+    "baseColumnName": "categories",
+    "expression": "grel:cell.cross(\"categories\", \"catid\")[0].cells[\"name\"].value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column field_area",
+    "columnName": "field_area",
+    "keyColumnName": "id",
+    "separator": "|",
+    "mode": "plain"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column field_ipcode",
+    "columnName": "field_ipcode"
+  },
+  {
+    "op": "core/multivalued-cell-split",
+    "description": "Split multi-valued cells in column field_shirearea",
+    "columnName": "field_shirearea",
+    "keyColumnName": "id",
+    "separator": "|",
+    "mode": "plain"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column geo_uk_name at index 29 based on column field_area using expression grel:value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "1",
+          "name": "published",
+          "type": "text",
+          "columnName": "published"
+        }
+      ]
+    },
+    "newColumnName": "geo_uk_name",
+    "columnInsertIndex": 29,
+    "baseColumnName": "field_area",
+    "expression": "grel:value",
+    "onError": "set-to-blank"
+  }
+]
